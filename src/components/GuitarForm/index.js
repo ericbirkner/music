@@ -30,10 +30,18 @@ const GuitarForm = ({ guitarSubmit }) => {
         <label for="marca">Marca</label>
         <input className="form-control" id="marca" type="text" name='marca' value={values.marca} onChange={handleChange} placeHolder="marca" required/>
       </div>
-      <div className="form-group">
-        <label for="tipo">Tipo</label>
-        <input className="form-control" id="tipo" type="text" name='tipo' value={values.tipo} onChange={handleChange} placeHolder="tipo" required/>
+
+      <div className="form-check">
+        <label className="form-check-label">
+          <input type="radio" className="form-check-input" name="tipo" value="guitarra" onChange={handleChange} />Guitarra
+        </label>
       </div>
+      <div class="form-check">
+        <label className="form-check-label">
+          <input type="radio" className="form-check-input" name="tipo" value="bajo" onChange={handleChange} />Bajo
+        </label>
+      </div>
+
       <button type='submit' className="btn btn-secondary">Guardar</button>
     </form>
   </div>

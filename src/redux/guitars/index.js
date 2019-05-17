@@ -1,6 +1,7 @@
 const REMOVE = 'REMOVE'
 const PUT_RING = 'PUT_RING'
 const INPUT_CHANGE = 'INPUT_CHANGE'
+const TIPO_CHANGE = 'TIPO_CHANGE'
 const TOGGLE_FORM = 'TOGGLE_FORM'
 const SAVE_GUITAR = 'SAVE_GUITAR'
 
@@ -27,6 +28,15 @@ export const putRing = id => {
 export const handleInputChange = (e) => {
   return ({
     type: INPUT_CHANGE,
+    payload: {
+      e
+    }
+  })
+}
+
+export const handleSelectChange = (e) => {
+  return ({
+    type: TIPO_CHANGE,
     payload: {
       e
     }
@@ -108,6 +118,17 @@ export default (state = initialState, action) => {
       console.log(state.filterText);
     }
 
+    case TIPO_CHANGE:{
+      //console.log('INPUT_CHANGE');
+      const { e } = action.payload
+      console.log(e.target.value);
+      return{
+        ...state,
+        filterTipo: e.target.value
+      }
+      console.log(state.filterTipo);
+    }
+
     case SAVE_GUITAR:{
       const { values } = action.payload
       console.log(values)
@@ -144,5 +165,6 @@ const initialState = {
   guitarList: ['1', '2', '3', '4', '5', '6'],
   heroIdUsingRing: null,
   filterText: '',
+  filterTipo: '',
   usingForm: false
 }

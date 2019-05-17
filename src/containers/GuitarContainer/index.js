@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-/*
-import TableFilter from '../../components/TableFilter'
-
-
-*/
+import GuitarFilter from '../../components/GuitarFilter'
 import GuitarForm from '../../components/GuitarForm'
 import GuitarUl from '../../components/GuitarUl'
 import { connect } from 'react-redux'
-import { removeGuitar, putRing, handleInputChange, toggleForm, saveGuitar } from '../../redux/guitars'
+import { removeGuitar, putRing, handleInputChange, handleSelectChange, toggleForm, saveGuitar } from '../../redux/guitars'
 
 
 const GuitarContainer = (props) => {
@@ -15,7 +11,10 @@ const GuitarContainer = (props) => {
 
   return (
     <div className="index container">
-    <p><button onClick={toggleForm} className="btn btn-primary">Agregar</button></p>
+    <p>
+      <button onClick={toggleForm} className="btn btn-primary">Agregar</button>
+       <GuitarFilter handleChange={handleInputChange} handleSelectChange={handleSelectChange} placeHolder='Buscar por nombre...' value={filterText}/>
+    </p>
     {usingForm && <GuitarForm guitarSubmit={saveGuitar} />}
     <GuitarUl
         guitars={guitars}
