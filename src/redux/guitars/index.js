@@ -157,7 +157,7 @@ const initialState = {
   entities: {
     '1': { id: '1', name: 'Strato', foto: 'http://musicopolix.com/blog-musicopolix/wp-content/uploads/2014/06/stratocaster-musicopolix.jpg', marca: 'Fender', tipo:'guitarra'},
     '2': { id: '2', name: 'Telecaster', foto: 'http://musicopolix.com/blog-musicopolix/wp-content/uploads/2014/06/telecaster-musicopolix.jpg', marca: 'Fender', tipo:'guitarra' },
-    '3': { id: '3', name: 'Les Paul', foto: 'http://musicopolix.com/blog-musicopolix/wp-content/uploads/2014/06/les-paul-musicopolix.jpg', marca: 'Gibson', tipo:'guitarra'},
+    '3': { id: '3', name: 'Les Paul', foto: 'https://www.thomann.de/blog/wp-content/uploads/2017/09/lpr7tvagnh1_main_hero_01-3.jpg', marca: 'Gibson', tipo:'guitarra'},
     '4': { id: '4', name: 'SemiHollow', foto: 'http://musicopolix.com/blog-musicopolix/wp-content/uploads/2014/06/jazz-musicopolix.jpg', marca: 'Gretsch', tipo:'guitarra'},
     '5': { id: '5', name: 'Precision Bass', foto: 'https://www.musicopolix.com/68912/fender-player-p-bass-pf-sonic-red-bajo-electrico.jpg', marca: 'Fender', tipo:'bajo'},
     '6': { id: '6', name: 'Jazz Bass', foto: 'https://cdn.shopify.com/s/files/1/0183/0329/products/99.jpg', marca: 'Fender',tipo:'bajo'}

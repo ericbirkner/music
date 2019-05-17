@@ -1,7 +1,7 @@
 import React from 'react'
 
 const GuitarFilter = props => {
-  const { placeHolder, filterText, handleChange } = props
+  const { placeHolder, filterText, filterTipo, handleChange, handleSelectChange } = props
 
   return (
     <span>
@@ -12,8 +12,8 @@ const GuitarFilter = props => {
         onChange={handleChange}
         className="form-control"
       />
-      <select className="form-control" name="tipo" onChange={handleChange}>
-        <option value="">Tipo</option>
+      <select className="form-control" name="tipo" onChange={handleSelectChange}>
+        <option value="">Filtrar por Tipo</option>
         <option value="guitarra">Guitarra</option>
         <option value="bajo">Bajo</option>
       </select>

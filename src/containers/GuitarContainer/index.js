@@ -7,7 +7,7 @@ import { removeGuitar, putRing, handleInputChange, handleSelectChange, toggleFor
 
 
 const GuitarContainer = (props) => {
-  const { guitars, heroIdUsingRing, removeGuitar, putRing, handleInputChange, filterText, usingForm, saveGuitar, toggleForm } = props
+  const { guitars, heroIdUsingRing, removeGuitar, putRing, handleInputChange, handleSelectChange, filterText, filterTipo, usingForm, saveGuitar, toggleForm } = props
 
   return (
     <div className="index container">
@@ -28,7 +28,7 @@ const GuitarContainer = (props) => {
 }
 
 const mapStateToProps = state => {
-  const { guitarList, entities, heroIdUsingRing, filterText, usingForm } = state
+  const { guitarList, entities, heroIdUsingRing, filterText, filterTipo, usingForm } = state
   console.log('filterText=>'+filterText);
 
   let filteredHeroes = guitarList.map(hero => entities[hero])
@@ -39,12 +39,19 @@ const mapStateToProps = state => {
     })
   }
 
+  if (filterTipo) {
+    filteredHeroes = filteredHeroes.filter(hero => {
+      return hero.tipo.toLowerCase().includes(filterTipo)
+    })
+  }
+
   console.log(filteredHeroes);
 
   return {
     guitars: filteredHeroes,
     heroIdUsingRing,
     filterText,
+    filterTipo,
     usingForm
   }
 }
@@ -53,6 +60,7 @@ const mapDispatchToProps = {
   removeGuitar,
   putRing,
   handleInputChange,
+  handleSelectChange,
   toggleForm,
   saveGuitar
 }

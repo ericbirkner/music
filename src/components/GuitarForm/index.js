@@ -20,15 +20,15 @@ const GuitarForm = ({ guitarSubmit }) => {
     <form onSubmit={handleSubmit}>
       <div className="form-group">
         <label for="name">Nombre</label>
-        <input className="form-control" id="name" type="text" name='name' value={values.name} onChange={handleChange} placeHolder="name" required/>
+        <input className="form-control" id="name" type="text" name='name' value={values.name} onChange={handleChange} placeholder="name" required/>
       </div>
       <div className="form-group">
         <label for="foto">Foto</label>
-        <input className="form-control" id="foto" type="url" name='foto' value={values.foto} onChange={handleChange} placeHolder="foto" required/>
+        <input className="form-control" id="foto" type="url" name='foto' value={values.foto} onChange={handleChange} placeholder="foto" required/>
       </div>
       <div className="form-group">
         <label for="marca">Marca</label>
-        <input className="form-control" id="marca" type="text" name='marca' value={values.marca} onChange={handleChange} placeHolder="marca" required/>
+        <input className="form-control" id="marca" type="text" name='marca' value={values.marca} onChange={handleChange} placeholder="marca" required/>
       </div>
 
       <div className="form-check">
