@@ -2,7 +2,7 @@ import React from 'react'
 
 const GuitarLi = (props) => {
   const { killHero, putRing, usingRing } = props
-  const { name, race, age, weapon, id, status } = props.hero
+  const { name,  marca, foto, id, status } = props.hero
 
   const isDead = status === 'dead'
 
@@ -12,18 +12,26 @@ const GuitarLi = (props) => {
     toReturn = null
   } else {
     toReturn = (
-      <tr className={`${isDead ? 'dead' : ''}`}>
-        <td>{name}</td>
-        <td>{race}</td>
-        <td>{age}</td>
-        <td>{weapon}</td>
-        <td>
-          <div className="controls">
-            <div onClick={() => killHero(id)}>☠ Kill</div>
-            {!usingRing && <div onClick={() => putRing(id)}>💍 Use Ring</div>}
-          </div>
-        </td>
-      </tr>
+      <li className={`${isDead ? 'dead' : ''}`}>
+        <div className="left">
+          <h2>{name}</h2>
+          <h5>{marca}</h5>
+        </div>
+        <div className="right">
+          <img src={foto}/>
+            <div className="controls">
+              <button type="button" className="btn btn-warning" onClick={() => putRing(id)}>
+               Edit
+               </button>
+               <button type="button" className="btn btn-danger" onClick={() => killHero(id)}>
+                  <span className="glyphicon glyphicon-remove"></span> Remove
+               </button>
+               
+              {!usingRing && <div >💍 Use Ring</div>}
+            </div>
+        </div>
+
+      </li>
     )
   }
 

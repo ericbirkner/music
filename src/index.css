@@ -7,6 +7,37 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+ul.guitars{
+  width: 80%;
+  margin: 20px auto;
+  padding: 0;
+}
+
+ul.guitars li{
+  width: 100%;
+  list-style: none;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+ul.guitars li .left{
+  float: left;
+  width: 30%;
+}
+
+ul.guitars li .right{
+  float: right;
+  width: 70%;
+}
+
+ul.guitars li .right img{
+  width: 100%;
+  height: auto;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

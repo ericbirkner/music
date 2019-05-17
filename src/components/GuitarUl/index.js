@@ -2,16 +2,7 @@ import React from 'react'
 import GuitarLi from './GuitarLi'
 
 const GuitarUl = ({guitars, killHero, putRing, usingRing}) => (
-  <table className="characters-table" border='1' align='center'>
-    <tbody>
-      <tr className="character-row">
-        <th>Name</th>
-        <th>Race</th>
-        <th>Age</th>
-        <th>Weapon</th>
-        <th></th>
-      </tr>
-
+  <ul className="guitars">
       {guitars.map((hero, index) => (
         <GuitarLi
           key={index}
@@ -21,8 +12,7 @@ const GuitarUl = ({guitars, killHero, putRing, usingRing}) => (
           usingRing={usingRing}
         />
       ))}
-    </tbody>
-  </table>
+  </ul>
 )
 
 export default GuitarUl

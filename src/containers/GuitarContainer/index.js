@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 /*
 import TableFilter from '../../components/TableFilter'
 
-import HeroForm from '../../components/HeroForm'
+
 */
+import GuitarForm from '../../components/GuitarForm'
 import GuitarUl from '../../components/GuitarUl'
 import { connect } from 'react-redux'
 import { killHero, putRing, handleInputChange, toggleForm, saveHero } from '../../redux/guitars'
@@ -13,7 +14,9 @@ const GuitarContainer = (props) => {
   const { guitars, heroIdUsingRing, killHero, putRing, handleInputChange, filterText, usingForm, saveHero, toggleForm } = props
 
   return (
-    <div className="index">
+    <div className="index container">
+    <p><button onClick={toggleForm} className="btn btn-primary">Agregar</button></p>
+    {usingForm && <GuitarForm heroSubmit={saveHero} />}
     <GuitarUl
         guitars={guitars}
         killHero={killHero}
