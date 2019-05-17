@@ -1,13 +1,13 @@
-const KILL_HERO = 'KILL_HERO'
+const REMOVE = 'REMOVE'
 const PUT_RING = 'PUT_RING'
 const INPUT_CHANGE = 'INPUT_CHANGE'
 const TOGGLE_FORM = 'TOGGLE_FORM'
-const SAVE_HERO = 'SAVE_HERO'
+const SAVE_GUITAR = 'SAVE_GUITAR'
 
-export const killHero = id => {
+export const removeGuitar = id => {
   console.log('IM BEING CALLED 1')
   return ({
-    type: KILL_HERO,
+    type: REMOVE,
     payload: {
       id
     }
@@ -42,10 +42,10 @@ export const toggleForm = () => {
   })
 }
 
-export const saveHero = (values) => {
-  console.log('SAVE_HERO')
+export const saveGuitar = (values) => {
+  console.log('SAVE_GUITAR')
   return ({
-    type: SAVE_HERO,
+    type: SAVE_GUITAR,
     payload: {
       values
     }
@@ -66,8 +66,8 @@ export default (state = initialState, action) => {
   console.log('Llega al reducer la action', action)
   switch (action.type) {
 
-    case KILL_HERO:{
-      console.log('Llego la action', KILL_HERO)
+    case REMOVE:{
+      console.log('Llego la action', REMOVE)
       const { id } = action.payload
       const withoutDeadHero = state.guitarList.filter(heroId => heroId !== id)
 
@@ -108,7 +108,7 @@ export default (state = initialState, action) => {
       console.log(state.filterText);
     }
 
-    case SAVE_HERO:{
+    case SAVE_GUITAR:{
       const { values } = action.payload
       console.log(values)
       const newId = state.guitarList.length + 1

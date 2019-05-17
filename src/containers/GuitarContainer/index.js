@@ -7,19 +7,19 @@ import TableFilter from '../../components/TableFilter'
 import GuitarForm from '../../components/GuitarForm'
 import GuitarUl from '../../components/GuitarUl'
 import { connect } from 'react-redux'
-import { killHero, putRing, handleInputChange, toggleForm, saveHero } from '../../redux/guitars'
+import { removeGuitar, putRing, handleInputChange, toggleForm, saveGuitar } from '../../redux/guitars'
 
 
 const GuitarContainer = (props) => {
-  const { guitars, heroIdUsingRing, killHero, putRing, handleInputChange, filterText, usingForm, saveHero, toggleForm } = props
+  const { guitars, heroIdUsingRing, removeGuitar, putRing, handleInputChange, filterText, usingForm, saveGuitar, toggleForm } = props
 
   return (
     <div className="index container">
     <p><button onClick={toggleForm} className="btn btn-primary">Agregar</button></p>
-    {usingForm && <GuitarForm heroSubmit={saveHero} />}
+    {usingForm && <GuitarForm guitarSubmit={saveGuitar} />}
     <GuitarUl
         guitars={guitars}
-        killHero={killHero}
+        removeGuitar={removeGuitar}
         putRing={putRing}
         usingRing={heroIdUsingRing}
       />
@@ -51,11 +51,11 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  killHero,
+  removeGuitar,
   putRing,
   handleInputChange,
   toggleForm,
-  saveHero
+  saveGuitar
 }
 
 export default  connect(mapStateToProps, mapDispatchToProps)(GuitarContainer)

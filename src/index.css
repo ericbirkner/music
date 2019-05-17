@@ -23,6 +23,10 @@ ul.guitars li{
   margin-bottom: 20px;
 }
 
+ul.guitars li.dead{
+  display: none;
+}
+
 ul.guitars li .left{
   float: left;
   width: 30%;

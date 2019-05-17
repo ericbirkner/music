@@ -1,8 +1,8 @@
 import React from 'react'
 
 const GuitarLi = (props) => {
-  const { killHero, putRing, usingRing } = props
-  const { name,  marca, foto, id, status } = props.hero
+  const { removeGuitar, putRing, usingRing } = props
+  const { name,  marca, foto, id, tipo, status } = props.hero
 
   const isDead = status === 'dead'
 
@@ -14,7 +14,7 @@ const GuitarLi = (props) => {
     toReturn = (
       <li className={`${isDead ? 'dead' : ''}`}>
         <div className="left">
-          <h2>{name}</h2>
+          <h2>{tipo} - {name}</h2>
           <h5>{marca}</h5>
         </div>
         <div className="right">
@@ -23,11 +23,9 @@ const GuitarLi = (props) => {
               <button type="button" className="btn btn-warning" onClick={() => putRing(id)}>
                Edit
                </button>
-               <button type="button" className="btn btn-danger" onClick={() => killHero(id)}>
+               <button type="button" className="btn btn-danger" onClick={() => removeGuitar(id)}>
                   <span className="glyphicon glyphicon-remove"></span> Remove
                </button>
-               
-              {!usingRing && <div >💍 Use Ring</div>}
             </div>
         </div>
 
