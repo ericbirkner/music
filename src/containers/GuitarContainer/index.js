@@ -31,24 +31,25 @@ const mapStateToProps = state => {
   const { guitarList, entities, heroIdUsingRing, filterText, filterTipo, usingForm, currentGuitar } = state
   console.log('filterText=>'+filterText);
 
-  let filteredHeroes = guitarList.map(guitar => entities[guitar])
+  let filteredGuitars = guitarList.map(guitar => entities[guitar])
 
   if (filterText) {
-    filteredHeroes = filteredHeroes.filter(guitar => {
+    filteredGuitars = filteredGuitars.filter(guitar => {
       return guitar.name.toLowerCase().includes(filterText)
     })
   }
 
   if (filterTipo) {
-    filteredHeroes = filteredHeroes.filter(guitar => {
+    filteredGuitars = filteredGuitars.filter(guitar => {
       return guitar.tipo.toLowerCase().includes(filterTipo)
     })
   }
 
-  console.log(filteredHeroes);
+  console.log(filteredGuitars);
+
 
   return {
-    guitars: filteredHeroes.sort((a,b)=>a-b),
+    guitars: filteredGuitars,
     heroIdUsingRing,
     filterText,
     filterTipo,
