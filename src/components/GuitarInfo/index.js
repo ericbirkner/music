@@ -1,15 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-const GuitarLi = (props) => {
+const GuitarInfo = (props) => {
   const { removeGuitar, editGuitar, usingRing } = props
   const { name,  marca, foto, id, tipo, status } = props.hero
 
-  const isDead = status === 'dead'
 
-
-    return(
-      <li className={`${isDead ? 'dead' : ''}`}>
+  return (
+      <div className="container card">
         <div className="left">
           <h2>{tipo} - {name}</h2>
           <h5>{marca}</h5>
@@ -27,8 +25,9 @@ const GuitarLi = (props) => {
             </div>
         </div>
 
-      </li>
+      </div>
     )
+
 }
 
-export default GuitarLi
+export default GuitarInfo

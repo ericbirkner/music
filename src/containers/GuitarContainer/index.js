@@ -47,7 +47,6 @@ const mapStateToProps = state => {
 
   console.log(filteredGuitars);
 
-
   return {
     guitars: filteredGuitars,
     heroIdUsingRing,
