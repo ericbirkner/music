@@ -3,11 +3,11 @@ import GuitarFilter from '../../components/GuitarFilter'
 import GuitarForm from '../../components/GuitarForm'
 import GuitarUl from '../../components/GuitarUl'
 import { connect } from 'react-redux'
-import { removeGuitar, putRing, handleInputChange, handleSelectChange, toggleForm, saveGuitar } from '../../redux/guitars'
+import { removeGuitar, editGuitar, handleInputChange, handleSelectChange, toggleForm, saveGuitar } from '../../redux/guitars'
 
 
 const GuitarContainer = (props) => {
-  const { guitars, heroIdUsingRing, removeGuitar, putRing, handleInputChange, handleSelectChange, filterText, filterTipo, usingForm, saveGuitar, toggleForm } = props
+  const { guitars, heroIdUsingRing, removeGuitar, editGuitar, handleInputChange, handleSelectChange, filterText, filterTipo, usingForm, saveGuitar, toggleForm, currentGuitar } = props
 
   return (
     <div className="index container">
@@ -15,11 +15,11 @@ const GuitarContainer = (props) => {
       <button onClick={toggleForm} className="btn btn-primary">Agregar</button>
        <GuitarFilter handleChange={handleInputChange} handleSelectChange={handleSelectChange} placeHolder='Buscar por nombre...' value={filterText}/>
     </p>
-    {usingForm && <GuitarForm guitarSubmit={saveGuitar} />}
+    {usingForm && <GuitarForm guitarSubmit={saveGuitar} currentGuitar={currentGuitar} />}
     <GuitarUl
         guitars={guitars}
         removeGuitar={removeGuitar}
-        putRing={putRing}
+        editGuitar={editGuitar}
         usingRing={heroIdUsingRing}
       />
 
@@ -28,7 +28,7 @@ const GuitarContainer = (props) => {
 }
 
 const mapStateToProps = state => {
-  const { guitarList, entities, heroIdUsingRing, filterText, filterTipo, usingForm } = state
+  const { guitarList, entities, heroIdUsingRing, filterText, filterTipo, usingForm, currentGuitar } = state
   console.log('filterText=>'+filterText);
 
   let filteredHeroes = guitarList.map(hero => entities[hero])
@@ -52,13 +52,14 @@ const mapStateToProps = state => {
     heroIdUsingRing,
     filterText,
     filterTipo,
-    usingForm
+    usingForm,
+    currentGuitar
   }
 }
 
 const mapDispatchToProps = {
   removeGuitar,
-  putRing,
+  editGuitar,
   handleInputChange,
   handleSelectChange,
   toggleForm,

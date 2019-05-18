@@ -1,7 +1,7 @@
 import React from 'react'
 
 const GuitarLi = (props) => {
-  const { removeGuitar, putRing, usingRing } = props
+  const { removeGuitar, editGuitar, usingRing } = props
   const { name,  marca, foto, id, tipo, status } = props.hero
 
   const isDead = status === 'dead'
@@ -20,7 +20,7 @@ const GuitarLi = (props) => {
         <div className="right">
           <img src={foto}/>
             <div className="controls">
-              <button type="button" className="btn btn-warning" onClick={() => putRing(id)}>
+              <button type="button" className="btn btn-warning" onClick={() => editGuitar(id)}>
                Edit
                </button>
                <button type="button" className="btn btn-danger" onClick={() => removeGuitar(id)}>

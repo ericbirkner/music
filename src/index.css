@@ -29,12 +29,17 @@ ul.guitars li.dead{
 
 ul.guitars li .left{
   float: left;
-  width: 30%;
+  width: 40%;
+}
+
+ul.guitars li h2{
+  text-transform: capitalize;
+  font-size: 1.5em;
 }
 
 ul.guitars li .right{
   float: right;
-  width: 70%;
+  width: 60%;
 }
 
 ul.guitars li .right img{

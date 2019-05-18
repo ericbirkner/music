@@ -1,5 +1,5 @@
 const REMOVE = 'REMOVE'
-const PUT_RING = 'PUT_RING'
+const EDIT_GUITAR = 'EDIT_GUITAR'
 const INPUT_CHANGE = 'INPUT_CHANGE'
 const TIPO_CHANGE = 'TIPO_CHANGE'
 const TOGGLE_FORM = 'TOGGLE_FORM'
@@ -9,16 +9,6 @@ export const removeGuitar = id => {
   console.log('IM BEING CALLED 1')
   return ({
     type: REMOVE,
-    payload: {
-      id
-    }
-  })
-}
-
-export const putRing = id => {
-  console.log('FUNCTION PUT_RING')
-  return ({
-    type: PUT_RING,
     payload: {
       id
     }
@@ -53,7 +43,7 @@ export const toggleForm = () => {
 }
 
 export const saveGuitar = (values) => {
-  console.log('SAVE_GUITAR')
+  //console.log('SAVE_GUITAR')
   return ({
     type: SAVE_GUITAR,
     payload: {
@@ -61,6 +51,17 @@ export const saveGuitar = (values) => {
     }
   })
 }
+
+export const editGuitar = (id) => {
+  //console.log('FUNCTION EDIT_GUITAR')
+  return ({
+    type: EDIT_GUITAR,
+    payload: {
+      id
+    }
+  })
+}
+
 
 const editEntity = (state,id,params)=>{
   return{
@@ -88,15 +89,23 @@ export default (state = initialState, action) => {
       }
     }
 
-    case PUT_RING:{
-      console.log('usando PUT_RING');
+    case EDIT_GUITAR:{
       const { id } = action.payload
+      console.log('usando EDIT_GUITAR id:'+id);
+      return({
+        ...state,
+        usingForm: !state.usingForm,
+        guitarEditing: id,
+        currentGuitar:state.entities[id]
+      })
 
+      /*
       return{
         ...state,
         entities: editEntity(state,id,{status:'using-ring'}),
-        heroIdUsingRing:id
-      }
+        guitarEditing:id
+      }*/
+
     }
 
     case TOGGLE_FORM:{
@@ -132,8 +141,12 @@ export default (state = initialState, action) => {
     case SAVE_GUITAR:{
       const { values } = action.payload
       console.log(values)
-      const newId = state.guitarList.length + 1
-
+      let newId = null
+      if(values.id>0){
+        newId = values.id
+      }else{
+        newId = state.guitarList.length + 1
+      }
       return{
         ...state,
         entities: {
@@ -146,9 +159,7 @@ export default (state = initialState, action) => {
         guitarList: [...state.guitarList, newId],
         usingForm: false
       }
-
     }
-
     default: return state
   }
 }
@@ -163,8 +174,10 @@ const initialState = {
     '6': { id: '6', name: 'Jazz Bass', foto: 'https://cdn.shopify.com/s/files/1/0183/0329/products/99.jpg', marca: 'Fender',tipo:'bajo'}
   },
   guitarList: ['1', '2', '3', '4', '5', '6'],
-  heroIdUsingRing: null,
+  guitarEditing: null,
   filterText: '',
   filterTipo: '',
-  usingForm: false
+  guitarEditing:'',
+  usingForm: false,
+  currentGuitar:null
 }
