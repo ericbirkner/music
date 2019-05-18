@@ -80,12 +80,14 @@ export default (state = initialState, action) => {
     case REMOVE:{
       console.log('Llego la action', REMOVE)
       const { id } = action.payload
-      const withoutDeadHero = state.guitarList.filter(heroId => heroId !== id)
-
+      const tmp_guitarList = state.guitarList;
+      //quito el elemento de la lista
+      tmp_guitarList.splice(id,1);
+      console.log(tmp_guitarList)
       return {
         ...state,
         entities: editEntity(state,id,{status:'dead'}),
-        guitarList: [...withoutDeadHero, id]
+        guitarList: [...tmp_guitarList]
       }
     }
 
@@ -142,11 +144,21 @@ export default (state = initialState, action) => {
       const { values } = action.payload
       console.log(values)
       let newId = null
+      const tmp_guitarList = [...state.guitarList];
+
       if(values.id>0){
         newId = values.id
+        //quito el elemento de la lista
+        //tmp_guitarList.splice(newId-1,1);
+
+        console.log(tmp_guitarList);
+
       }else{
-        newId = state.guitarList.length + 1
+        newId = tmp_guitarList.length + 1
       }
+
+      //alert(newId);
+
       return{
         ...state,
         entities: {
@@ -156,7 +168,7 @@ export default (state = initialState, action) => {
             id: newId
           }
         },
-        guitarList: [...state.guitarList, newId],
+        guitarList: [...tmp_guitarList.filter(numero => numero !==newId), newId],
         usingForm: false
       }
     }
