@@ -4,6 +4,7 @@ const INPUT_CHANGE = 'INPUT_CHANGE'
 const TIPO_CHANGE = 'TIPO_CHANGE'
 const TOGGLE_FORM = 'TOGGLE_FORM'
 const SAVE_GUITAR = 'SAVE_GUITAR'
+const GET_GUITAR = 'GET_GUITAR'
 
 export const removeGuitar = id => {
   console.log('IM BEING CALLED 1')
@@ -62,6 +63,16 @@ export const editGuitar = (id) => {
   })
 }
 
+export const getGuitar = (id) => {
+  //console.log('FUNCTION EDIT_GUITAR')
+  return ({
+    type: GET_GUITAR,
+    payload: {
+      id
+    }
+  })
+}
+
 
 const editEntity = (state,id,params)=>{
   return{
@@ -100,14 +111,14 @@ export default (state = initialState, action) => {
         guitarEditing: id,
         currentGuitar:state.entities[id]
       })
+    }
 
-      /*
-      return{
-        ...state,
-        entities: editEntity(state,id,{status:'using-ring'}),
-        guitarEditing:id
-      }*/
-
+    case GET_GUITAR:{
+      const { id } = action.payload
+      console.log('usando GET_GUITAR id:'+id);
+      return({
+        currentGuitar:state.entities[id]
+      })
     }
 
     case TOGGLE_FORM:{
